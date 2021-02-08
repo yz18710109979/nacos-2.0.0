@@ -1,31 +1,13 @@
-/*
- * Copyright 1999-2018 Alibaba Group Holding Ltd.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.alibaba.nacos.api.config;
 
 import com.alibaba.nacos.api.config.listener.Listener;
 import com.alibaba.nacos.api.exception.NacosException;
 
 /**
- * Config Service Interface.
- *
- * @author Nacos
+ * 配置服务接口。
  */
 public interface ConfigService {
-    
+
     /**
      * Get config.
      *
@@ -36,7 +18,7 @@ public interface ConfigService {
      * @throws NacosException NacosException
      */
     String getConfig(String dataId, String group, long timeoutMs) throws NacosException;
-    
+
     /**
      * Get config and register Listener.
      *
@@ -54,7 +36,7 @@ public interface ConfigService {
      */
     String getConfigAndSignListener(String dataId, String group, long timeoutMs, Listener listener)
             throws NacosException;
-    
+
     /**
      * Add a listener to the configuration, after the server modified the configuration, the client will use the
      * incoming listener callback. Recommended asynchronous processing, the application can implement the getExecutor
@@ -67,7 +49,7 @@ public interface ConfigService {
      * @throws NacosException NacosException
      */
     void addListener(String dataId, String group, Listener listener) throws NacosException;
-    
+
     /**
      * Publish config.
      *
@@ -78,7 +60,7 @@ public interface ConfigService {
      * @throws NacosException NacosException
      */
     boolean publishConfig(String dataId, String group, String content) throws NacosException;
-    
+
     /**
      * Publish config.
      *
@@ -90,7 +72,7 @@ public interface ConfigService {
      * @throws NacosException NacosException
      */
     boolean publishConfig(String dataId, String group, String content, String type) throws NacosException;
-    
+
     /**
      * Remove config.
      *
@@ -100,7 +82,7 @@ public interface ConfigService {
      * @throws NacosException NacosException
      */
     boolean removeConfig(String dataId, String group) throws NacosException;
-    
+
     /**
      * Remove listener.
      *
@@ -109,14 +91,14 @@ public interface ConfigService {
      * @param listener listener
      */
     void removeListener(String dataId, String group, Listener listener);
-    
+
     /**
      * Get server status.
      *
      * @return whether health
      */
     String getServerStatus();
-    
+
     /**
      * Shutdown the resource service.
      *

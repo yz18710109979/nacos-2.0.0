@@ -27,9 +27,9 @@ import java.util.Properties;
  * @author nkorange
  */
 public class NamingFactory {
-    
+
     /**
-     * Create a new naming service.
+     * 创建新的命名服务。
      *
      * @param serverList server list
      * @return new naming service
@@ -37,6 +37,7 @@ public class NamingFactory {
      */
     public static NamingService createNamingService(String serverList) throws NacosException {
         try {
+            // 通过反射实例化出了一个NamingService的实例NacosNamingService，构造器是一个带String入参的
             Class<?> driverImplClass = Class.forName("com.alibaba.nacos.client.naming.NacosNamingService");
             Constructor constructor = driverImplClass.getConstructor(String.class);
             NamingService vendorImpl = (NamingService) constructor.newInstance(serverList);
@@ -45,7 +46,7 @@ public class NamingFactory {
             throw new NacosException(NacosException.CLIENT_INVALID_PARAM, e);
         }
     }
-    
+
     /**
      * Create a new naming service.
      *
